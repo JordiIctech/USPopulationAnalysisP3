@@ -11,8 +11,10 @@ session = boto3.Session(
 
 s3 = session.resource('s3')
 
+"""
 for bucket in s3.buckets.all():
     print(bucket.name)
+
 
 
 bucket = s3.Bucket('jtechuspopulationp3')
@@ -25,10 +27,10 @@ for obj in bucket.objects.all():
     print(str(obj))
 """
 
-bucketfile = ('jtechuspopulationp3','predata/Combine2000RG.csv')
-print(bucketfile)
 
-body = bucketfile.get()['Body'].read()
+#s3 = boto3.resource('s3')
+obj = s3.Object("jtechuspopulationp3", "predata/Combine2000RG.csv")
+body = obj.get()['Body'].read()
 print(body)
-"""
+
 print("--- %s seconds ---" % round((time.time() - start_time),4))
