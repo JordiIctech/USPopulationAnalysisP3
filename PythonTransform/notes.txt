@@ -1,3 +1,5 @@
 Warning: For unit testing, functions and files starting or ending with "test" will be tested for.
 Make unit test to check if name included in cities.
 Complete ETL+ for city analysis
+https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.2020.html
+https://www.census.gov/data/datasets/2000/dec/redistricting.html
