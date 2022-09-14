@@ -1,3 +1,6 @@
+import requests
+from zipfile import ZipFile
+
 #Beautiful soup
 #python data scraping
 #python download file from url
@@ -61,3 +64,18 @@ states = [["Alabama", "al"],
 for i in states:
     for z in i:
         print(z)
+
+
+link = "https://www2.census.gov/programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/Alabama/al2020.pl.zip"
+
+call = requests.get(link)
+
+open("data/testing.zip", "wb").write(call.content)
+
+with ZipFile('data/testing.zip', 'r') as zipObject:
+   listOfFileNames = zipObject.namelist()
+   for fileName in listOfFileNames:
+       if "geo" in fileName:
+           # Extract a single file from zip
+           zipObject.extract(fileName, 'data/geo')
+           print('Geo Extracted')
