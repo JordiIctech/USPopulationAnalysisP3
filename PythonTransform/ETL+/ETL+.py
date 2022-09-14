@@ -61,21 +61,30 @@ states = [["Alabama", "al"],
       ["Wyoming", "wy"]]
 
 
-for i in states:
-    for z in i:
-        print(z)
+for i in range(0,len(states)):
+    link = f"https://www2.census.gov/census_2000/datasets/redistricting_file--pl_94-171/{states[i][0]}/{states[i][1]}geo.upl.zip"
+    
+    call = requests.get(link)
+    open("data/testing.zip", "wb").write(call.content)
+
+    with ZipFile('data/testing.zip', 'r') as zipObject:
+        listOfFileNames = zipObject.namelist()
+        for fileName in listOfFileNames:
+            zipObject.extract(fileName, 'data/geo2000')
+            print(f'Geo {states[i][0]} Extracted 2000')
 
 
-link = "https://www2.census.gov/programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/Alabama/al2020.pl.zip"
+for i in range(0,len(states)):
+    link = f"https://www2.census.gov/programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/{states[i][0]}/{states[i][1]}2020.pl.zip"
+    
+    call = requests.get(link)
+    open("data/testing.zip", "wb").write(call.content)
 
-call = requests.get(link)
+    with ZipFile('data/testing.zip', 'r') as zipObject:
+        listOfFileNames = zipObject.namelist()
+        for fileName in listOfFileNames:
+            if "geo" in fileName:
+                # Extract a single file from zip
+                zipObject.extract(fileName, 'data/geo2020')
+                print(f'Geo {states[i][0]} Extracted 2020')
 
-open("data/testing.zip", "wb").write(call.content)
-
-with ZipFile('data/testing.zip', 'r') as zipObject:
-   listOfFileNames = zipObject.namelist()
-   for fileName in listOfFileNames:
-       if "geo" in fileName:
-           # Extract a single file from zip
-           zipObject.extract(fileName, 'data/geo')
-           print('Geo Extracted')
