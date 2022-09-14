@@ -1,11 +1,9 @@
 import requests
 from zipfile import ZipFile
+import sparkC
+import time
 
-#Beautiful soup
-#python data scraping
-#python download file from url
-#https://www.census.gov/data/datasets/2000/dec/redistricting.html
-
+start_time = time.time()
 
 states = [["Alabama", "al"], 
       ["Alaska", "ak"],    
@@ -88,3 +86,7 @@ for i in range(0,len(states)):
                 zipObject.extract(fileName, 'data/geo2020')
                 print(f'Geo {states[i][0]} Extracted 2020')
 
+
+#----------------------------------------------------------------------------------------------------
+print("--- %s seconds ---" % round((time.time() - start_time),4))
+#====================================================================================================
