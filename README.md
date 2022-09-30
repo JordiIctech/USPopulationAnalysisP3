@@ -1,13 +1,13 @@
-# USPopulationAnalysisP3
-US Census Population Analysis
----
-&nbsp;
-# Technologies
-> ## Python
-> ## SQL 
-> ## Spark
-> ## Scala
+## US Population Analysis P3
+- ETL and analysis done on databse obtained for the 2000, 2010 and 2020 US Census
 
-&nbsp;
-# Extra Tools
-> ## Tableu
+### Technologies:
+- Spark
+- SQL
+- Scala
+- AWS 
+- Hadoop
+- Hive
+
+## Extra:
+- Tableau
